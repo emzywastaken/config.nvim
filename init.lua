@@ -620,24 +620,6 @@ require('lazy').setup({
 
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
-      -- Automatically setup lsp after installation
-      vim.api.nvim_create_autocmd('User', {
-        pattern = 'MasonToolsUpdateCompleted',
-        group = vim.api.nvim_create_augroup('MasonTools-Auto-Install', { clear = true }),
-        callback = function(_)
-          for s, _ in pairs(servers) do
-            local has_config = pcall(require, 'lspconfig' .. s)
-            if not has_config then
-              -- pcall(require, 'lspconfig' .. s, setup, {})
-              -- this fucker throws error sometimes so i decided to shut him up
-              -- if you can find out why and fix it go ahead
-              -- `pcall` keeps him quiet(i think i fixed it?)
-              require('lspconfig')[s].setup {}
-            end
-          end
-        end,
-      })
-
       require('mason-lspconfig').setup {
         handlers = {
           function(server_name)
