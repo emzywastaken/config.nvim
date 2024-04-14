@@ -136,6 +136,10 @@ vim.opt.clipboard = 'unnamedplus'
 vim.opt.wrap = false
 -- Enable break indent
 -- vim.opt.breakindent = true
+vim.opt.tabstop = 4
+-- vim.opt.softtabstop = 0
+vim.opt.shiftwidth = 4
+-- vim.opt.expandtab = true
 
 -- Save undo history
 vim.opt.undofile = true
@@ -162,7 +166,7 @@ vim.opt.splitbelow = true
 --  See `:help 'list'`
 --  and `:help 'listchars'`
 vim.opt.list = true
-vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+vim.opt.listchars = { tab = ' ', trail = '·', nbsp = '␣' }
 
 -- Preview substitutions live, as you type!
 vim.opt.inccommand = 'split'
@@ -190,6 +194,10 @@ vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next [D]iagnostic message' })
 vim.keymap.set('n', '<leader>cd', vim.diagnostic.open_float, { desc = 'Show Line [D]iagnostic' })
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
+
+-- More Prev/Next style keymaps
+vim.keymap.set('n', '[b', '<cmd>bp<cr>', { desc = 'Go to previous [B]uffer' })
+vim.keymap.set('n', ']b', '<cmd>bn<cr>', { desc = 'Go to next [B]uffer' })
 
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
@@ -516,7 +524,8 @@ require('lazy').setup({
 
           -- Rename the variable under your cursor.
           --  Most Language Servers support renaming across files, etc.
-          map('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
+          -- map('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
+          map('<leader>cr', vim.lsp.buf.rename, '[C]ode [R]ename')
 
           -- Execute a code action, usually your cursor needs to be on top of an error
           -- or a suggestion from your LSP for this to activate.
@@ -654,7 +663,7 @@ require('lazy').setup({
         -- Disable "format_on_save lsp_fallback" for languages that don't
         -- have a well standardized coding style. You can add additional
         -- languages here or re-enable it for the disabled ones.
-        local disable_filetypes = { c = true, cpp = true }
+        local disable_filetypes = { c = true, cpp = true, go = true }
         return {
           timeout_ms = 500,
           lsp_fallback = not disable_filetypes[vim.bo[bufnr].filetype],
