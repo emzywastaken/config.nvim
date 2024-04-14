@@ -132,8 +132,10 @@ vim.opt.showmode = false
 --  See `:help 'clipboard'`
 vim.opt.clipboard = 'unnamedplus'
 
+-- Disable line wrap. 'breakindent' shouldn't apply if line wrap is disabled
+vim.opt.wrap = false
 -- Enable break indent
-vim.opt.breakindent = true
+-- vim.opt.breakindent = true
 
 -- Save undo history
 vim.opt.undofile = true
@@ -564,12 +566,18 @@ require('lazy').setup({
       --  - capabilities (table): Override fields in capabilities. Can be used to disable certain LSP features.
       --  - settings (table): Override the default settings passed when initializing the server.
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
-      ---@type lspconfig.options
       local servers = {
         -- clangd = {},
         gopls = {},
         -- pyright = {},
-        rust_analyzer = {},
+        rust_analyzer = {
+          -- on_attach = function(_, bufnr)
+          --   vim.lsp.inlay_hint.enable(bufnr)
+          -- end,
+        },
+        zls = {
+          cmd = { '/home/emzy/.zvm/bin/zls' },
+        },
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --
         -- Some languages (like typescript) have entire language plugins that can be useful:
@@ -611,14 +619,21 @@ require('lazy').setup({
       })
 
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
-      vim.cmd.MasonToolsInstall()
 
-      -- Automatically setup lsp when after installation
+      -- Automatically setup lsp after installation
       vim.api.nvim_create_autocmd('User', {
         pattern = 'MasonToolsUpdateCompleted',
+        group = vim.api.nvim_create_augroup('MasonTools-Auto-Install', { clear = true }),
         callback = function(_)
           for s, _ in pairs(servers) do
-            require('lspconfig')[s].setup {}
+            local has_config = pcall(require, 'lspconfig' .. s)
+            if not has_config then
+              -- pcall(require, 'lspconfig' .. s, setup, {})
+              -- this fucker throws error sometimes so i decided to shut him up
+              -- if you can find out why and fix it go ahead
+              -- `pcall` keeps him quiet(i think i fixed it?)
+              require('lspconfig')[s].setup {}
+            end
           end
         end,
       })
@@ -626,7 +641,6 @@ require('lazy').setup({
       require('mason-lspconfig').setup {
         handlers = {
           function(server_name)
-            print('Server: ' .. server_name)
             local server = servers[server_name] or {}
             -- This handles overriding only values explicitly passed
             -- by the server configuration above. Useful when disabling
@@ -848,10 +862,10 @@ require('lazy').setup({
   },
   { -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
-    event = 'UIEnter',
+    event = { 'BufReadPost', 'BufNewFile' },
     build = ':TSUpdate',
     opts = {
-      ensure_installed = { 'rust', 'bash', 'c', 'html', 'lua', 'luadoc', 'markdown', 'vim', 'vimdoc' },
+      ensure_installed = { 'rust', 'go', 'zig', 'bash', 'c', 'html', 'lua', 'luadoc', 'markdown', 'vim', 'vimdoc' },
       -- Autoinstall languages that are not installed
       -- auto_install = true,
       highlight = {
