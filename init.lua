@@ -93,20 +93,6 @@ vim.g.maplocalleader = ' '
 -- Set to true if you have a Nerd Font installed
 vim.g.have_nerd_font = true
 
--- Set clipboard provider. Removing this increases startup time
-vim.g.clipboard = {
-  name = 'WslClipboard(win32yank)',
-  paste = {
-    ['+'] = 'win32yank.exe -o --lf',
-    ['*'] = 'win32yank.exe -o --lf',
-  },
-  copy = {
-    ['+'] = 'win32yank.exe -i --crlf',
-    ['*'] = 'win32yank.exe -i --crlf',
-  },
-  cache_enabled = 0,
-}
-
 -- [[ Setting options ]]
 -- See `:help vim.opt`
 -- NOTE: You can change these options as you wish!
@@ -139,7 +125,7 @@ vim.opt.wrap = false
 vim.opt.tabstop = 4
 -- vim.opt.softtabstop = 0
 vim.opt.shiftwidth = 4
--- vim.opt.expandtab = true
+vim.opt.expandtab = true
 
 -- Save undo history
 vim.opt.undofile = true
@@ -590,7 +576,7 @@ require('lazy').setup({
       --  - settings (table): Override the default settings passed when initializing the server.
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
-        -- clangd = {},
+        clangd = {},
         gopls = {},
         -- pyright = {},
         rust_analyzer = {
@@ -953,6 +939,29 @@ require('lazy').setup({
     },
   },
 })
+
+-- Custom lsp
+-- local client = vim.lsp.start_client {
+--   name = 'educationalsp-zig',
+--   cmd = { '/home/emzy/documents/dev/rust/lsp/target/release/lsp' },
+--   -- cmd = { "/home/emzy/documents/dev/go/educationalsp/bin/lsp" },
+--   -- cmd = { '/home/emzy/documents/dev/zig/lsp/zig-out/bin/lsp' },
+--   -- on_attach = require("lazyvim.plugins.lsp").on_attach,
+-- }
+--
+-- if not client then
+--   vim.notify 'hey, you didnt do the client thing good'
+-- end
+--
+-- vim.api.nvim_create_autocmd('FileType', {
+--   pattern = 'markdown',
+--   callback = function()
+--     local attached = vim.lsp.buf_attach_client(0, client)
+--     if attached then
+--       vim.notify 'educationalsp has attached to buffer'
+--     end
+--   end,
+-- })
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
