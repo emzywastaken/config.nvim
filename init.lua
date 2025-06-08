@@ -589,6 +589,16 @@ require('lazy').setup({
           --   vim.lsp.inlay_hint.enable(bufnr)
           -- end,
         },
+        -- nixd = {
+        --   cmd = { 'nixd' },
+        --   settings = {
+        --     nixd = {
+        --       nixpkgs = {
+        --         expr = 'import <nixpkgs> { }',
+        --       },
+        --     },
+        --   },
+        -- },
         zls = {
           cmd = { '/home/emzy/.zvm/bin/zls' },
         },
@@ -616,6 +626,7 @@ require('lazy').setup({
           },
         },
       }
+      vim.lsp.enable 'nixd'
 
       -- Ensure the servers and tools above are installed
       --  To check the current status of installed tools and/or manually install
