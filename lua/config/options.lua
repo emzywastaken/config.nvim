@@ -3,6 +3,8 @@ vim.g.maplocalleader = ' '
 
 vim.g.have_nerd_font = true
 
+-- vim.o.winborder = 'rounded'
+
 vim.o.number = true
 vim.o.relativenumber = true
 
@@ -12,6 +14,11 @@ vim.o.showmode = false
 vim.schedule(function()
   vim.o.clipboard = 'unnamedplus'
 end)
+
+vim.o.tabstop = 4
+vim.o.softtabstop = 4
+vim.o.shiftwidth = 4
+vim.o.expandtab = true
 
 vim.o.breakindent = true
 vim.o.undofile = true
