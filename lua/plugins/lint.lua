@@ -1,3 +1,6 @@
+-- Disables loading this plugin
+if true then return {} end
+
 return {
 
   { -- Linting
