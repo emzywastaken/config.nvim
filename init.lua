@@ -581,7 +581,7 @@ require('lazy').setup({
       --  - settings (table): Override the default settings passed when initializing the server.
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
-        clangd = {},
+        -- clangd = {},
         gopls = {},
         -- pyright = {},
         rust_analyzer = {
@@ -627,6 +627,7 @@ require('lazy').setup({
         },
       }
       vim.lsp.enable 'nixd'
+      vim.lsp.enable 'clangd'
 
       -- Ensure the servers and tools above are installed
       --  To check the current status of installed tools and/or manually install
@@ -875,7 +876,7 @@ require('lazy').setup({
     event = { 'BufReadPost', 'BufNewFile' },
     build = ':TSUpdate',
     opts = {
-      ensure_installed = { 'rust', 'go', 'zig', 'bash', 'c', 'html', 'lua', 'luadoc', 'markdown', 'vim', 'vimdoc' },
+      ensure_installed = { 'rust', 'go', 'zig', 'bash', 'c', 'html', 'lua', 'luadoc', 'markdown', 'vim', 'vimdoc', 'desktop' },
       -- Autoinstall languages that are not installed
       -- auto_install = true,
       highlight = {
