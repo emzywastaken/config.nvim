@@ -3,6 +3,9 @@ vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 vim.keymap.set('n', '<leader>cd', vim.diagnostic.open_float, { desc = 'Show Line [D]iagnostic' })
 
+vim.keymap.set('n', '[b', '<cmd>bp<cr>', { desc = 'Previous Buffer' })
+vim.keymap.set('n', ']b', '<cmd>bn<cr>', { desc = 'Next Buffer' })
+
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 
 vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
