@@ -23,6 +23,7 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 --
 -- Line wrap, Auto format, etc.
 -- Git blame.
+-- Diagnostic virtual lines.
 
 -- TODO: Add Tab keymaps
 -- Should be scoped under "󰌒"
