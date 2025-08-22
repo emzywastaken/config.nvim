@@ -111,6 +111,11 @@ return { -- Main LSP Configuration
             formatting = {
               command = { 'alejandra' },
             },
+            options = {
+              nixos = {
+                expr = '(builtins.getFlake ("git+file://" + toString ./.)).nixosConfigurations.aje.options',
+              },
+            },
           },
         },
       },
