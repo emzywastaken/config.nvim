@@ -105,6 +105,9 @@ return { -- Main LSP Configuration
     local capabilities = require('blink.cmp').get_lsp_capabilities()
     -- See `:help lspconfig-all` for a list of all the pre-configured LSPs
     local servers = {
+      clangd = {},
+      -- gopls = {},
+      rust_analyzer = {},
       nixd = {
         settings = {
           nixd = {
@@ -119,9 +122,6 @@ return { -- Main LSP Configuration
           },
         },
       },
-      clangd = {},
-      -- gopls = {},
-      rust_analyzer = {},
       lua_ls = {
         settings = {
           Lua = {
