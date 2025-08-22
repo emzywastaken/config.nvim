@@ -22,6 +22,7 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 -- Toggles should be scoped unser "t"
 --
 -- Line wrap, Auto format, etc.
+-- Git blame.
 
 -- TODO: Add Tab keymaps
 -- Should be scoped under "󰌒"
