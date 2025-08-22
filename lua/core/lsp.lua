@@ -118,6 +118,9 @@ return { -- Main LSP Configuration
               nixos = {
                 expr = '(builtins.getFlake ("git+file://" + toString ./.)).nixosConfigurations.aje.options',
               },
+              home_manager = {
+                expr = '(builtins.getFlake (builtins.toString ./.)).nixosConfigurations.aje.options.home-manager.users.value.emzy',
+              },
             },
           },
         },
