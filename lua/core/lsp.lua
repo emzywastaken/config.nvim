@@ -2,8 +2,6 @@ return { -- Main LSP Configuration
   'neovim/nvim-lspconfig',
   dependencies = {
     { 'mason-org/mason.nvim', opts = {} },
-    -- 'mason-org/mason-lspconfig.nvim',
-    -- 'WhoIsSethDaniel/mason-tool-installer.nvim',
 
     -- Useful status updates for LSP.
     { 'j-hui/fidget.nvim', opts = {
@@ -107,7 +105,7 @@ return { -- Main LSP Configuration
     local capabilities = require('blink.cmp').get_lsp_capabilities()
     -- See `:help lspconfig-all` for a list of all the pre-configured LSPs
     local servers = {
-      -- clangd = {},
+      clangd = {},
       -- gopls = {},
       rust_analyzer = {},
       lua_ls = {
