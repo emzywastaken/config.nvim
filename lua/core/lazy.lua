@@ -16,11 +16,16 @@ require('lazy').setup {
 
     { import = 'plugins' },
     { -- Highlight todo, notes, etc in comments
-      -- TODO: Add telescope binding.
       'folke/todo-comments.nvim',
       event = 'VimEnter',
       dependencies = { 'nvim-lua/plenary.nvim' },
-      opts = { signs = false },
+      config = function()
+        require('todo-comments').setup {
+          signs = false,
+        }
+
+        vim.keymap.set('n', '<leader>st', '<cmd>TodoTelescope<cr>', { desc = 'Search TODOs' })
+      end,
     },
 
     require 'core.lsp',
