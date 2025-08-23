@@ -20,8 +20,11 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 -- vim.keymap.set("n", "<C-S-k>", "<C-w>K", { desc = "Move window to the upper" })
 -- TODO: Add keymap to toggle
 -- Toggles should be scoped unser "t"
---
--- Line wrap, Auto format, etc.
+vim.keymap.set('n', '<leader>tw', function()
+  vim.o.wrap = not vim.o.wrap
+end, { desc = 'Toggle Line Wrap' })
+
+-- Auto format, etc.
 -- Git blame.
 -- Diagnostic virtual lines.
 
