@@ -30,4 +30,7 @@ require('lazy').setup {
   ui = {
     icons = vim.g.have_nerd_font and {},
   },
+  change_detection = {
+    notify = false,
+  },
 }
