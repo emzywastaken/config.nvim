@@ -16,6 +16,7 @@ require('lazy').setup {
 
     { import = 'plugins' },
     { -- Highlight todo, notes, etc in comments
+      -- TODO: Add telescope binding.
       'folke/todo-comments.nvim',
       event = 'VimEnter',
       dependencies = { 'nvim-lua/plenary.nvim' },
