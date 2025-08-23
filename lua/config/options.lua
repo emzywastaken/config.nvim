@@ -3,9 +3,6 @@ vim.g.maplocalleader = ' '
 
 vim.g.have_nerd_font = true
 
--- TODO: Only enable rouned for completions
--- vim.o.winborder = 'rounded'
-
 vim.o.number = true
 vim.o.relativenumber = true
 
