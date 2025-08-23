@@ -107,6 +107,7 @@ return { -- Main LSP Configuration
     local servers = {
       clangd = {},
       -- gopls = {},
+      zls = {},
       rust_analyzer = {},
       nixd = {
         settings = {
