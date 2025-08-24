@@ -110,6 +110,7 @@ return { -- Main LSP Configuration
       gleam = {},
       zls = {},
       rust_analyzer = {},
+      taplo = {},
       nixd = {
         settings = {
           nixd = {
