@@ -24,7 +24,6 @@ return { -- Main LSP Configuration
           vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
         end
 
-        -- vim.keymap.del('n', 'gr', { buffer = event.buf })
         map('<leader>cr', vim.lsp.buf.rename, '[R]ename')
         map('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction', { 'n', 'x' })
         map('<leader>cs', require('telescope.builtin').lsp_document_symbols, 'Document Symbols')
@@ -75,6 +74,10 @@ return { -- Main LSP Configuration
 
     -- Diagnostic Config
     -- See :help vim.diagnostic.Opts
+    vim.keymap.set('n', '<leader>td', function()
+      vim.diagnostic.enable(not vim.diagnostic.is_enabled())
+    end, { desc = 'Toggle diagnostic virtual text' })
+
     vim.diagnostic.config {
       severity_sort = true,
       float = { border = 'rounded', source = 'if_many' },
