@@ -110,6 +110,7 @@ return { -- Main LSP Configuration
     local servers = {
       clangd = {},
       gopls = {},
+      ocamllsp = {},
       gleam = {},
       zls = {},
       rust_analyzer = {},
