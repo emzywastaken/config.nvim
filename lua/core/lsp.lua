@@ -109,7 +109,7 @@ return { -- Main LSP Configuration
     -- See `:help lspconfig-all` for a list of all the pre-configured LSPs
     local servers = {
       clangd = {},
-      -- gopls = {},
+      gopls = {},
       gleam = {},
       zls = {},
       rust_analyzer = {},
