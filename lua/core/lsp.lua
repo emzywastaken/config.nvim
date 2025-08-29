@@ -29,6 +29,10 @@ return { -- Main LSP Configuration
         map('<leader>cs', require('telescope.builtin').lsp_document_symbols, 'Document Symbols')
         map('<leader>sS', require('telescope.builtin').lsp_dynamic_workspace_symbols, 'Workspace Symbols')
 
+        map('K', function()
+          vim.lsp.buf.hover { border = 'rounded' }
+        end, 'Hover')
+
         map('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
         map('gI', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
         map('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
