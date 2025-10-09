@@ -22,7 +22,6 @@ vim.keymap.set('n', '<leader>tf', function()
 end, { desc = 'Toggle Auto Format ' })
 
 -- Git blame.
--- Diagnostic virtual lines.
 
 -- TODO: Add Tab keymaps
 -- Should be scoped under "󰌒"
