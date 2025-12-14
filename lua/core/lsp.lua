@@ -112,6 +112,7 @@ return { -- Main LSP Configuration
     local capabilities = require('blink.cmp').get_lsp_capabilities()
     -- See `:help lspconfig-all` for a list of all the pre-configured LSPs
     local servers = {
+      hls = {},
       clangd = {},
       gopls = {},
       ocamllsp = {},
