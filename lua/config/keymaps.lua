@@ -25,5 +25,6 @@ end, { desc = 'Toggle Auto Format ' })
 
 -- TODO: Add Tab keymaps
 -- Should be scoped under "󰌒"
---
 -- Tab Next, Tab Close, etc.
+vim.keymap.set('n', '[t', '<cmd>tabprevious<cr>', { desc = 'Previous tab' })
+vim.keymap.set('n', ']t', '<cmd>tabnext<cr>', { desc = 'Next tab' })
