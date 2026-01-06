@@ -115,7 +115,21 @@ return { -- Main LSP Configuration
       hls = {},
       clangd = {},
       gopls = {},
-      ocamllsp = {},
+      ocamllsp = {
+        settings = {
+          extendedHover = { enable = true },
+          standardHover = { enable = true },
+          codelens = { enable = true },
+          duneDiagnostics = { enable = true },
+          inlayHints = {
+            hintPatternVariables = true,
+            hintLetBindings = true,
+            hintFunctionParams = true,
+          },
+          syntaxDocumentation = { enable = true },
+          merlinJumpCodeActions = { enable = true },
+        },
+      },
       gleam = {},
       zls = {},
       rust_analyzer = {},
