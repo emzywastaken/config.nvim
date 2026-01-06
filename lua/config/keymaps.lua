@@ -21,10 +21,6 @@ vim.keymap.set('n', '<leader>tf', function()
   vim.g.disable_autoformat = not vim.g.disable_autoformat
 end, { desc = 'Toggle Auto Format ' })
 
--- Git blame.
-
--- TODO: Add Tab keymaps
--- Should be scoped under "󰌒"
--- Tab Next, Tab Close, etc.
+vim.keymap.set('n', '<tab>d', '<cmd>tabclose<cr>', { desc = 'Close tab' })
 vim.keymap.set('n', '[t', '<cmd>tabprevious<cr>', { desc = 'Previous tab' })
 vim.keymap.set('n', ']t', '<cmd>tabnext<cr>', { desc = 'Next tab' })
